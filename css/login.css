@@ -1,0 +1,20 @@
+.navbar-brand {
+    font-weight: 400;
+    font-style: normal;
+    font-size: large;
+    color: black;
+  }
+.nav-text{
+    text-transform: uppercase;
+    background-color: #ffff;
+}
+.short-card {
+    max-width: 500px;
+    margin: 150px auto;
+    text-transform: capitalize;
+    border-radius: 10px;
+}
+.card-header{
+    background-color: #eaeaea;
+}
+
