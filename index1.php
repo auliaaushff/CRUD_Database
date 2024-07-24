@@ -1,6 +1,17 @@
 <?php
-include 'koneksi1.php';
 session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['admin_username'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
+
+<?php
+include 'koneksi1.php';
+// session_start();
 
 $query = "SELECT * FROM tb_renja";
 $sql = mysqli_query($conn, $query);
@@ -81,8 +92,7 @@ $no = 0;
         </a>
         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
             <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="main.php">HOME</a>
-            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">ABOUT</a>
-            <a class="py-2 link-body-emphasis text-decoration-none" href="login.php">LOGOUT</a>
+            <a class="py-2 link-body-emphasis text-decoration-none" href="logout.php">LOGOUT</a>
         </nav>
     </header>
     <div class="container">
@@ -225,7 +235,14 @@ $no = 0;
             </table>
         </div>
     </div>
-    <div class="mb-5"></div>
+    <footer class="bg-body-tertiary text-center">
+                <!-- Copyright -->
+                <div class="text-center p-3 mt-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                    © 2024 Copyright:
+                    <a class="text-body" href="https://diskominfo.lumajangkab.go.id/">diskominfo.lumajangkab.go.id</a>
+                </div>
+                <!-- Copyright -->
+    </footer>
 </div>
 </body>
 </html>
