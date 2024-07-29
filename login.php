@@ -84,5 +84,33 @@ if (isset($_SESSION['admin_username'])) {
         </div>
         <!-- Close Container -->
     </div>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            fetch('api.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    action: 'login',
+                    username: username,
+                    password: password
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('error-message').classList.remove('d-none');
+                    document.getElementById('error-message').textContent = data.error;
+                } else if (data.success) {
+                    window.location.href = 'main.php';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

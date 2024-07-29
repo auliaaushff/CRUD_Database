@@ -78,8 +78,8 @@ if (!isset($_SESSION['admin_username'])) {
                 </div>
                 <div class="col-md-6">
                     <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-                    <h2>Database SKPD Kabupaten Lumajang</h2>
-                    <p>Informasi SKPD : Akses cepat dan mudah ke data Satuan Kerja Perangkat Daerah (SKPD) untuk mendukung transparansi dan efisiensi di Kabupaten Lumajang.</p>
+                    <h2>Database PD Kabupaten Lumajang</h2>
+                    <p>Informasi PD : Akses cepat dan mudah ke data Perangkat Daerah (PD) untuk mendukung transparansi dan efisiensi di Kabupaten Lumajang.</p>
                     <a class="btn btn-outline-secondary" href="index2.php" type="button">Lihat Detail</a>
                     </div>
                 </div>

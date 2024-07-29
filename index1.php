@@ -1,21 +1,9 @@
 <?php
 session_start();
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
 if (!isset($_SESSION['admin_username'])) {
     header("Location: login.php");
     exit();
 }
-?>
-
-<?php
-include 'koneksi1.php';
-// session_start();
-
-$query = "SELECT * FROM tb_renja";
-$sql = mysqli_query($conn, $query);
-$no = 0;
 ?>
 
 <!doctype html>
@@ -60,7 +48,8 @@ $no = 0;
             $('#dt').DataTable({
                 "ajax": {
                     "url": "fetch1_data.php",
-                    "type": "GET"
+                    "type": "GET",
+                    "dataSrc": "data"
                 },
                 "columns": [
                     { "data": null, "render": function (data, type, row, meta) { return meta.row + 1; }, "className": "dt-center" },
@@ -77,7 +66,10 @@ $no = 0;
                     { "data": "target_satuan" },
                     { "data": "tahun_evaluasi" },
                     { "data": "created_at" },
-                    { "data": "aksi", "className": "aksi-cell" }
+                    { "data": null, "className": "aksi-cell", "render": function (data, type, row) {
+                        return '<div class="mb-2"><a href="kelola1.php?ubah=' + row.id_renja + '" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a></div>' +
+                            '<div><a href="proses1.php?hapus=' + row.id_renja + '" class="btn btn-danger btn-sm" onClick="return confirm(\'Apakah anda yakin ingin menghapus data tersebut?\')"><i class="fa fa-trash"></i></a></div>';
+                    }}
                 ]
             });
         });
@@ -106,23 +98,16 @@ $no = 0;
             </figcaption>
         </figure>
         <!-- Tambah Data -->
-        <a href="kelola1.php" type="button" class="btn btn-primary">
+        <a href="kelola1.php" class="btn btn-primary">
             <i class="fa fa-plus"></i>
             Tambah Data
         </a>
-        <?php 
-        if(isset($_SESSION['eksekusi'])): 
-        ?>
+        <?php if(isset($_SESSION['eksekusi'])): ?>
         <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-            <?php
-            echo $_SESSION['eksekusi'];
-            ?>
+            <?php echo $_SESSION['eksekusi']; ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <?php
-        // unset($_SESSION['eksekusi']);
-        endif;
-        ?>
+        <?php unset($_SESSION['eksekusi']); endif; ?>
         <!-- Export Data -->
         <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fa fa-sign-out" aria-hidden="true"></i>
@@ -134,19 +119,12 @@ $no = 0;
             <li><a class="dropdown-item" href="export/export1_pdf.php">PDF</a></li>
             <li><a class="dropdown-item" href="export/export1_json.php">JSON</a></li>
         </ul>
-        <?php 
-        if(isset($_SESSION['export'])): 
-        ?>
+        <?php if(isset($_SESSION['export'])): ?>
         <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-            <?php
-            echo $_SESSION['export'];
-            ?>
+            <?php echo $_SESSION['export']; ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <?php
-        // unset($_SESSION['export']);
-        endif;
-        ?>
+        <?php unset($_SESSION['export']); endif; ?>
         <!-- Import Data -->
         <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fa fa-sign-in" aria-hidden="true"></i>
@@ -161,20 +139,12 @@ $no = 0;
         <?php include 'import/import1_csv.php'; ?>
         <?php include 'import/import1_xlsx.php'; ?>
         <?php include 'import/import1_json.php'; ?>
-
-        <?php
-        if(isset($_SESSION['import'])): 
-        ?>
+        <?php if(isset($_SESSION['import'])): ?>
         <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-            <?php
-            echo $_SESSION['import'];
-            ?>
+            <?php echo $_SESSION['import']; ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <?php
-        unset($_SESSION['import']);
-        endif;
-        ?>
+        <?php unset($_SESSION['import']); endif; ?>
         <div class="table-responsive mt-4">
             <table id="dt" class="table table-striped" style="width:100%">
                 <thead>
@@ -196,42 +166,6 @@ $no = 0;
                     <th class="aksi-cell">Aksi</th>
                 </tr>
                 </thead>
-                <tbody>
-                <?php
-                while($result = mysqli_fetch_assoc($sql)){
-                ?>
-                <tr>
-                    <td><center><?php echo ++$no; ?>.</center></td>
-                    <td><?php echo $result['id_skpd']; ?></td>
-                    <td><?php echo $result['kode_urusan']; ?></td>
-                    <td><?php echo $result['urusan']; ?></td>
-                    <td><?php echo $result['sasaran']; ?></td>
-                    <td><?php echo $result['no']; ?></td>
-                    <td><?php echo $result['indikator']; ?></td>
-                    <td><?php echo $result['level']; ?></td>
-                    <td><?php echo $result['formulasi_perhitungan']; ?></td>
-                    <td><?php echo $result['klasifikasi_kinerja']; ?></td>
-                    <td><?php echo $result['target_tahunan']; ?></td>
-                    <td><?php echo $result['target_satuan']; ?></td>
-                    <td><?php echo $result['tahun_evaluasi']; ?></td>
-                    <td><?php echo $result['created_at']; ?></td>
-                    <td class="aksi-cell">
-                        <div class="mb-2">
-                            <a href="kelola1.php?ubah=<?php echo $result['id_renja']; ?>" type="button" class="btn btn-success btn-sm">
-                                <i class="fa fa-pencil"></i>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="proses1.php?hapus=<?php echo $result['id_renja']; ?>" type="button" class="btn btn-danger btn-sm" onClick="return confirm('Apakah anda yakin ingin menghapus data tersebut?')">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-                <?php
-                }
-                ?>
-                </tbody>
             </table>
         </div>
     </div>
