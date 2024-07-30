@@ -153,11 +153,7 @@ function ubah_data($data) {
 function hapus_data($data) {
     $id = $data['hapus'];
 
-    $queryShow = "DELETE FROM tb_renja WHERE id_renja = '$id'";
-    $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);
-    $result = mysqli_fetch_assoc($sqlShow);
-        
-    $query = "DELETE FROM tb_renja WHERE id_renja = $id";
+    $query = "UPDATE tb_renja SET deleted_at = NOW() WHERE id_renja = '$id'";
     $sql = mysqli_query($GLOBALS['conn'], $query);
 
     return true;

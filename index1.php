@@ -11,7 +11,7 @@ if (!isset($_SESSION['admin_username'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIPD | Kabupaten Lumajang</title>
+    <title>RENJA Kabupaten Lumajang</title>
     <!-- Own CSS -->
     <link rel="stylesheet" href="css/index.css">
     <!-- Bootstrap -->
@@ -88,7 +88,7 @@ if (!isset($_SESSION['admin_username'])) {
         </nav>
     </header>
     <div class="container">
-        <h1 class="mt-4">DATA RKPD</h1>
+        <h1 class="mt-4">DATA SAKIP</h1>
         <figure>
             <blockquote class="blockquote">
                 <p>Berisi data yang telah disimpan di database</p>

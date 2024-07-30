@@ -1,5 +1,5 @@
 <?php
-    include 'koneksi2.php';
+    include 'koneksi1.php';
     require 'vendor/autoload.php'; // Include PHPSpreadsheet
     date_default_timezone_set('Asia/Jakarta');
 

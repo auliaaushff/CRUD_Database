@@ -5,6 +5,7 @@
     session_start();
     date_default_timezone_set('Asia/Jakarta');
 
+    // Initialize variables
     $id_skpd = '';
     $kode_urusan = '';
     $urusan = '';
@@ -18,6 +19,14 @@
     $target_satuan = '';
     $tahun_evaluasi = '';
     $created = date('Y-m-d\TH:i:s');
+
+    // Fetch id_skpd options
+    $id_skpd_options = [];
+    $query_skpd = "SELECT id FROM tb_skpd2";
+    $result_skpd = mysqli_query($conn, $query_skpd);
+    while ($row = mysqli_fetch_assoc($result_skpd)) {
+        $id_skpd_options[] = $row['id'];
+    }
 
     if(isset($_GET['ubah'])){
         $id = $_GET['ubah'];
@@ -40,7 +49,7 @@
         $target_satuan = $result['target_satuan'];
         $tahun_evaluasi = $result['tahun_evaluasi'];
         $created = date('Y-m-d\TH:i:s');
-        }
+    }
 ?>
 
 <html lang="en">
@@ -52,6 +61,8 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+    <!-- jQuery (for datetime-local) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Datetime -->
     <script>
         $(document).ready(function() {
@@ -74,7 +85,6 @@
         </a>
         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
             <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="main.php">HOME</a>
-            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">ABOUT</a>
             <a class="py-2 link-body-emphasis text-decoration-none" href="login.php">LOGOUT</a>
         </nav>
     </header>
@@ -85,8 +95,15 @@
                 <label for="id_skpd" class="form-label">
                     ID SKPD
                 </label>
-                <input type="text" class="form-control" id="id_skpd" name="id_skpd" value ="<?php echo $id_skpd; ?>">
+                <select class="form-control" id="id_skpd" name="id_skpd">
+                    <?php foreach ($id_skpd_options as $option) : ?>
+                        <option value="<?php echo $option; ?>" <?php echo ($option == $id_skpd) ? 'selected' : ''; ?>>
+                            <?php echo $option; ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
+            <!-- Other fields remain unchanged -->
             <div class="mb-3">
                 <label for="kode_urusan" class="form-label">
                     Kode Urusan

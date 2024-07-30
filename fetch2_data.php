@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-include 'koneksi2.php';
+include 'koneksi1.php';
 
 $query = "SELECT * FROM tb_skpd2";
 $result = mysqli_query($conn, $query);

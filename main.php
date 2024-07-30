@@ -42,7 +42,7 @@ if (!isset($_SESSION['admin_username'])) {
     <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#712cf9">
 
-    <title>SIPD | Kabupaten Lumajang</title>
+    <title>RENJA Kabupaten Lumajang</title>
 </head>
 <body>
     <!-- Jumbotron -->
@@ -71,8 +71,8 @@ if (!isset($_SESSION['admin_username'])) {
             <div class="row align-items-md-stretch">
                 <div class="col-md-6">
                     <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-                    <h2>Database RKPD Kabupaten Lumajang</h2>
-                    <p>Rencana Kerja Terintegrasi : Sistem manajemen Rencana Kerja Perangkat Daerah (RKPD) untuk memudahkan perencanaan dan pelaporan kegiatan di Kabupaten Lumajang.</p>
+                    <h2>Database SAKIP Kabupaten Lumajang</h2>
+                    <p>Sistem Terintegrasi : Sistem Akuntabilitas Kinerja Instansi Pemerintah (SAKIP) untuk memudahkan perencanaan dan pelaporan kegiatan di Kabupaten Lumajang.</p>
                     <a class="btn btn-outline-secondary" href="index1.php" type="button">Lihat Detail</a>
                     </div>
                 </div>

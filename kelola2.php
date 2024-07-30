@@ -1,7 +1,7 @@
 <!doctype html>
 
 <?php
-    include 'koneksi2.php';
+    include 'koneksi1.php';
     session_start();
     date_default_timezone_set('Asia/Jakarta'); // Set timezone sesuai dengan keinginan
 
