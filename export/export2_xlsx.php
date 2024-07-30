@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php'; // Menyertakan autoload Composer dengan jalur relatif
-include __DIR__ . '/../koneksi2.php'; // Menyertakan file koneksi database dengan jalur relatif
+include __DIR__ . '/../koneksi1.php'; // Menyertakan file koneksi database dengan jalur relatif
 session_start(); // Memulai sesi
 
 use Shuchkin\SimpleXLSXGen;

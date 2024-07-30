@@ -14,7 +14,7 @@ if (mysqli_num_rows($result) > 0) {
 
 // Mengatur header untuk file JSON
 header('Content-Type: application/json');
-header('Content-Disposition: attachment; filename=Data_RKPD.json');
+header('Content-Disposition: attachment; filename=Data_SAKIP.json');
 
 // Outputkan data dalam format JSON
 echo json_encode($data, JSON_PRETTY_PRINT);

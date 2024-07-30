@@ -39,7 +39,7 @@ while ($row = mysqli_fetch_assoc($sql)) {
 
 // Menghasilkan file Excel menggunakan SimpleXLSXGen
 $xlsx = SimpleXLSXGen::fromArray($data);
-$xlsx->downloadAs('Data_RKPD.xlsx');
+$xlsx->downloadAs('Data_SAKIP.xlsx');
 
 // Menghentikan eksekusi skrip
 exit();

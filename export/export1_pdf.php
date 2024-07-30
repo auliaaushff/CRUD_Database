@@ -72,6 +72,6 @@ foreach ($htmlChunks as $chunk) {
 }
 
 // Output file PDF ke browser
-$mpdf->Output("Data_RKPD.pdf", "D");
+$mpdf->Output("Data_SAKIP.pdf", "D");
 exit();
 ?>

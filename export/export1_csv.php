@@ -14,7 +14,7 @@ if (mysqli_num_rows($result) > 0) {
 
 // Mengatur header untuk file CSV
 header('Content-Type: text/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=Data_RKPD.csv');
+header('Content-Disposition: attachment; filename=Data_SAKIP.csv');
 $output = fopen('php://output', 'w');
 
 // Menulis header kolom ke file CSV

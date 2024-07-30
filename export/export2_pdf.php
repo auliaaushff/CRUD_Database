@@ -5,7 +5,7 @@ ini_set('pcre.recursion_limit', '10000000'); // Meningkatkan batas pcre.recursio
 set_time_limit(300); // Meningkatkan batas waktu eksekusi menjadi 300 detik (5 menit)
 
 require __DIR__ . '/../vendor/autoload.php'; // Menyertakan autoload Composer dengan jalur relatif
-include __DIR__ . '/../koneksi2.php'; // Menyertakan file koneksi database dengan jalur relatif
+include __DIR__ . '/../koneksi1.php'; // Menyertakan file koneksi database dengan jalur relatif
 session_start(); // Memulai sesi
 
 use Mpdf\Mpdf;

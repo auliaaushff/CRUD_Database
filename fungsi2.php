@@ -111,16 +111,12 @@
         return true;
     }
 
-    function hapus_data($data){
+    function hapus_data($data) {
         $id = $data['hapus'];
     
-        $queryShow = "SELECT * FROM tb_skpd2 WHERE id = '$id';";
-        $sqlShow = mysqli_query($GLOBALS['conn'], $queryShow);
-        $result = mysqli_fetch_assoc($sqlShow);
-        
-        $query = "DELETE FROM tb_skpd2 WHERE id = $id";
+        $query = "UPDATE tb_skpd2 SET deleted_at = NOW() WHERE id = '$id'";
         $sql = mysqli_query($GLOBALS['conn'], $query);
-
+    
         return true;
     }
 ?>

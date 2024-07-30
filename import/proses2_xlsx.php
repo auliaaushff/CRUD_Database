@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php'; // Menyertakan autoload Composer
-include __DIR__ . '/../koneksi2.php'; // Menyertakan file koneksi database
+include __DIR__ . '/../koneksi1.php'; // Menyertakan file koneksi database
 session_start(); // Memulai sesi
 date_default_timezone_set('Asia/Jakarta');
 
