@@ -26,7 +26,7 @@ if (isset($_SESSION['admin_username'])) {
     <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
     <!-- Custom styles for this template -->
     <link href="sign-in.css" rel="stylesheet">
-    <title>SIPD | Kabupaten Lumajang</title>
+    <title>RENJA Kabupaten Lumajang</title>
     <style>
         body, html {
             height: 100%;

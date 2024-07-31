@@ -2,7 +2,7 @@
 include_once(__DIR__ . '/../koneksi1.php'); // Menyertakan file koneksi database dengan jalur relatif
 
 // Query untuk mengambil data dari tabel tb_renja
-$query = "SELECT * FROM tb_renja";
+$query = "SELECT id_renja, id_skpd, kode_urusan, urusan, sasaran, no, indikator, level, formulasi_perhitungan, klasifikasi_kinerja, target_tahunan, target_satuan, tahun_evaluasi FROM tb_renja";
 $result = mysqli_query($conn, $query);
 
 $data = array();

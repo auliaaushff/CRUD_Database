@@ -6,14 +6,14 @@ session_start(); // Memulai sesi
 use Shuchkin\SimpleXLSXGen;
 
 // Mengambil data dari database
-$query = "SELECT * FROM tb_renja";
+$query = "SELECT id_renja, id_skpd, kode_urusan, urusan, sasaran, no, indikator, level, formulasi_perhitungan, klasifikasi_kinerja, target_tahunan, target_satuan, tahun_evaluasi FROM tb_renja";
 $sql = mysqli_query($conn, $query);
 
 // Menyiapkan data untuk dimasukkan ke dalam file Excel
 $data = [
     ['No.', 'ID SKPD', 'Kode Urusan', 'Urusan', 'Sasaran', 'No',
      'Indikator', 'Level', 'Formulasi Perhitungan', 'Klasifikasi Kinerja',
-     'Target Tahunan', 'Target Satuan', 'Tahun Evaluasi', 'Created at']
+     'Target Tahunan', 'Target Satuan', 'Tahun Evaluasi']
 ];
 
 $no = 1;
@@ -32,7 +32,6 @@ while ($row = mysqli_fetch_assoc($sql)) {
         $row['target_tahunan'],
         $row['target_satuan'],
         $row['tahun_evaluasi'],
-        $row['created_at']
     ];
     $no++;
 }

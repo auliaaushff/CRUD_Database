@@ -11,11 +11,11 @@ session_start(); // Memulai sesi
 use Mpdf\Mpdf;
 
 // Mengambil data dari database
-$query = "SELECT * FROM tb_renja";
+$query = "SELECT id_renja, id_skpd, kode_urusan, urusan, sasaran, no, indikator, level, formulasi_perhitungan, klasifikasi_kinerja, target_tahunan, target_satuan, tahun_evaluasi FROM tb_renja";
 $sql = mysqli_query($conn, $query);
 
 // Membuat HTML untuk PDF
-$html = '<h1>Data RKPD Kabupaten Lumajang</h1>';
+$html = '<h1>Data SAKIP Kabupaten Lumajang</h1>';
 $html .= '<table border="1" width="100%" style="border-collapse:collapse;">';
 $html .= '<thead>';
 $html .= '<tr>';
@@ -32,7 +32,6 @@ $html .= '<th>Klasifikasi Kinerja</th>';
 $html .= '<th>Target Tahunan</th>';
 $html .= '<th>Target Satuan</th>';
 $html .= '<th>Tahun Evaluasi</th>';
-$html .= '<th>Created at</th>';
 $html .= '</tr>';
 $html .= '</thead>';
 $html .= '<tbody>';
@@ -53,7 +52,6 @@ while($data = mysqli_fetch_assoc($sql)){
     $html .= '<td>'.$data['target_tahunan'].'</td>';
     $html .= '<td>'.$data['target_satuan'].'</td>';
     $html .= '<td>'.$data['tahun_evaluasi'].'</td>';
-    $html .= '<td>'.$data['created_at'].'</td>';
     $html .= '</tr>';
     $no++;
 }

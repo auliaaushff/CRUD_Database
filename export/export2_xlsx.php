@@ -6,12 +6,12 @@ session_start(); // Memulai sesi
 use Shuchkin\SimpleXLSXGen;
 
 // Mengambil data dari database
-$query = "SELECT * FROM tb_skpd2";
+$query = "SELECT id, nama, jenis, kode_skpd, tahun_skpd FROM tb_skpd2";
 $sql = mysqli_query($conn, $query);
 
 // Menyiapkan data untuk dimasukkan ke dalam file Excel
 $data = [
-    ['No.', 'Nama', 'Jenis', 'Kode SKPD', 'Tahun SKPD', 'Created at']
+    ['No.', 'Nama', 'Jenis', 'Kode SKPD', 'Tahun SKPD']
 ];
 
 $no = 1;
@@ -22,14 +22,13 @@ while ($row = mysqli_fetch_assoc($sql)) {
         $row['jenis'],
         $row['kode_skpd'],
         $row['tahun_skpd'],
-        $row['created_at']
     ];
     $no++;
 }
 
 // Menghasilkan file Excel menggunakan SimpleXLSXGen
 $xlsx = SimpleXLSXGen::fromArray($data);
-$xlsx->downloadAs('Data_SKPD.xlsx');
+$xlsx->downloadAs('Data_OPD.xlsx');
 
 // Menghentikan eksekusi skrip
 exit();

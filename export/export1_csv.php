@@ -1,8 +1,8 @@
 <?php
 include_once("../koneksi1.php"); // Menggunakan jalur relatif untuk menyertakan koneksi database
 
-// Ekspor ke CSV
-$query = "SELECT * FROM tb_renja";
+// Ekspor ke CSV dengan memilih kolom tertentu
+$query = "SELECT id_renja, id_skpd, kode_urusan, urusan, sasaran, no, indikator, level, formulasi_perhitungan, klasifikasi_kinerja, target_tahunan, target_satuan, tahun_evaluasi FROM tb_renja";
 $result = mysqli_query($conn, $query);
 
 $data = array();
@@ -18,7 +18,7 @@ header('Content-Disposition: attachment; filename=Data_SAKIP.csv');
 $output = fopen('php://output', 'w');
 
 // Menulis header kolom ke file CSV
-fputcsv($output, array('id_renja', 'id_skpd', 'kode_urusan', 'urusan', 'sasaran', 'no', 'indikator', 'level', 'formulasi_perhitungan', 'klasifikasi_kinerja', 'target_tahunan', 'target_satuan', 'tahun_evaluasi', 'created_at'));
+fputcsv($output, array('id_renja', 'id_skpd', 'kode_urusan', 'urusan', 'sasaran', 'no', 'indikator', 'level', 'formulasi_perhitungan', 'klasifikasi_kinerja','target_tahunan', 'target_satuan', 'tahun_evaluasi'));
 
 // Menulis baris data ke file CSV
 if (count($data) > 0) {

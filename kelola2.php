@@ -32,7 +32,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIPD | Kabupaten Lumajang</title>
+    <title>RENJA Kabupaten Lumajang</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->

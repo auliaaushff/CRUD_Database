@@ -11,11 +11,11 @@ session_start(); // Memulai sesi
 use Mpdf\Mpdf;
 
 // Mengambil data dari database
-$query = "SELECT * FROM tb_skpd2";
+$query = "SELECT id, nama, jenis, kode_skpd, tahun_skpd FROM tb_skpd2";
 $sql = mysqli_query($conn, $query);
 
 // Membuat HTML untuk PDF
-$html = '<h1>Data SKPD Kabupaten Lumajang</h1>';
+$html = '<h1>Data OPD Kabupaten Lumajang</h1>';
 $html .= '<table border="1" width="100%" style="border-collapse:collapse;">';
 $html .= '<thead>';
 $html .= '<tr>';
@@ -24,7 +24,6 @@ $html .= '<th>Nama</th>';
 $html .= '<th>Jenis</th>';
 $html .= '<th>Kode SKPD</th>';
 $html .= '<th>Tahun SKPD</th>';
-$html .= '<th>Created at</th>';
 $html .= '</tr>';
 $html .= '</thead>';
 $html .= '<tbody>';
@@ -37,7 +36,6 @@ while($data = mysqli_fetch_assoc($sql)){
     $html .= '<td>'.$data['jenis'].'</td>';
     $html .= '<td>'.$data['kode_skpd'].'</td>';
     $html .= '<td>'.$data['tahun_skpd'].'</td>';
-    $html .= '<td>'.$data['created_at'].'</td>';
     $html .= '</tr>';
     $no++;
 }
@@ -56,6 +54,6 @@ foreach ($htmlChunks as $chunk) {
 }
 
 // Output file PDF ke browser
-$mpdf->Output("Data_SKPD.pdf", "D");
+$mpdf->Output("Data_OPD.pdf", "D");
 exit();
 ?>
